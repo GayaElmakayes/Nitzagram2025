@@ -18,6 +18,9 @@ class Post:
 
         pass
 
+    def add_like(self):
+        self.likes_counter=+1
+
     def display(self):
         """
         Display the Post image/Text, description, location, likes and comments
