@@ -9,12 +9,12 @@ class Post:
     A class used to represent post on Nitzagram
     """
 
-    def __init__(self, username, location, description, likes_counter, comments):
+    def __init__(self, username, location, description):
         self.username = username
         self.location = location
         self.description = description
-        self.likes_counter = likes_counter
-        self.comments = comments
+        self.likes_counter = 0
+        self.comments = []
 
         pass
 
@@ -25,7 +25,15 @@ class Post:
 
         :return: None
         """
-        # TODO: write me!
+        font = pygame.font.SysFont('chalkduster.ttf', UI_FONT_SIZE)
+        text = font.render(self.username, True, BLACK)
+        screen.blit(text, [USER_NAME_X_POS, USER_NAME_Y_POS])
+
+        text = font.render(self.description, True, BLACK)
+        screen.blit(text, [USER_NAME_X_POS, USER_NAME_Y_POS])
+
+        self.display_comments()
+
         pass
 
     def display_comments(self):
