@@ -18,10 +18,10 @@ class Post:
         self.comments_display_index = 0
 
     def add_like(self):
-        self.likes_counter+=1
+        self.likes_counter += 1
 
-    def add_comment(self,text):
-        comment = Comment(text)
+    def add_comment(self, text):
+        comment = comments.append(text)
         self.comments.append(comment)
 
     def display(self):
@@ -36,11 +36,16 @@ class Post:
         screen.blit(text, [USER_NAME_X_POS, USER_NAME_Y_POS])
 
         text = font.render(self.description, True, BLACK)
-        screen.blit(text, [USER_NAME_X_POS, USER_NAME_Y_POS])
+        screen.blit(text, [DESCRIPTION_TEXT_X_POS, DESCRIPTION_TEXT_Y_POS])
+
+        likes_text = f"Liked by {self.likes_counter} users"
+        text = font.render(likes_text, True, BLACK)
+        screen.blit(text, [LIKE_TEXT_X_POS, LIKE_TEXT_Y_POS])
+
+        text = font.render(self.location, True, BLACK)
+        screen.blit(text, [LOCATION_TEXT_X_POS, LOCATION_TEXT_Y_POS])
 
         self.display_comments()
-
-        pass
 
     def display_comments(self):
         """
@@ -67,6 +72,19 @@ class Post:
             position_index += 1
             if i >= NUM_OF_COMMENTS_TO_DISPLAY - 1:
                 break
+
+        class TextPost(Post):
+            def __init__(self, username, location, description, text, text_color, background_color):
+                super().__init__(username, location, description)
+                self.text = text
+                self.text_color = text_color
+                self.background_color = background_color
+
+            def display(self, screen):
+
+
+
+
 
 
 class ImagePost(Post):
